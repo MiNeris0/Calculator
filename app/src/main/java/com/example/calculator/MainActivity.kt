@@ -107,6 +107,9 @@ class MainActivity : AppCompatActivity() {
             val expression = Expression(stringExpression)
             val expressionResult = expression.evaluate().numberValue
             resultTextView.text = expressionResult.toString()
+
+            numberStringBuilder.clear()
+            numberStringBuilder.append(expressionResult.toString())
         }
     }
 }
