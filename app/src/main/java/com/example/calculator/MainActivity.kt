@@ -5,128 +5,112 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.calculator.databinding.ActivityMainBinding
 import com.ezylang.evalex.Expression
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val zeroButton = findViewById<Button>(R.id.zero_button)
-        val oneButton = findViewById<Button>(R.id.one_button)
-        val twoButton = findViewById<Button>(R.id.two_button)
-        val threeButton = findViewById<Button>(R.id.three_button)
-        val fourButton = findViewById<Button>(R.id.four_button)
-        val fiveButton = findViewById<Button>(R.id.five_button)
-        val sixButton = findViewById<Button>(R.id.six_button)
-        val sevenButton = findViewById<Button>(R.id.seven_button)
-        val eightButton = findViewById<Button>(R.id.eight_button)
-        val nineButton = findViewById<Button>(R.id.nine_button)
-
-        val clearButton = findViewById<Button>(R.id.clear_button)
-        val resetButton = findViewById<Button>(R.id.reset_button)
-        val pointButton = findViewById<Button>(R.id.point_button)
-        val equalButton = findViewById<Button>(R.id.equal_button)
-        val plusButton = findViewById<Button>(R.id.plus_button)
-        val minusButton = findViewById<Button>(R.id.minus_button)
-        val multiplyButton = findViewById<Button>(R.id.multiply_button)
-        val divideButton = findViewById<Button>(R.id.divide_button)
-
-        val resultTextView = findViewById<TextView>(R.id.result_textView)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view: ConstraintLayout = binding.root
+        setContentView(view)
 
         val numberStringBuilder = StringBuilder()
 
-        zeroButton.setOnClickListener {
+        binding.zeroButton.setOnClickListener {
             numberStringBuilder.append(0)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        oneButton.setOnClickListener {
+        binding.oneButton.setOnClickListener {
             numberStringBuilder.append(1)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        twoButton.setOnClickListener {
+        binding.twoButton.setOnClickListener {
             numberStringBuilder.append(2)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        threeButton.setOnClickListener {
+        binding.threeButton.setOnClickListener {
             numberStringBuilder.append(3)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        fourButton.setOnClickListener {
+        binding.fourButton.setOnClickListener {
             numberStringBuilder.append(4)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        fiveButton.setOnClickListener {
+        binding.fiveButton.setOnClickListener {
             numberStringBuilder.append(5)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        sixButton.setOnClickListener {
+        binding.sixButton.setOnClickListener {
             numberStringBuilder.append(6)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        sevenButton.setOnClickListener {
+        binding.sevenButton.setOnClickListener {
             numberStringBuilder.append(7)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        eightButton.setOnClickListener {
+        binding.eightButton.setOnClickListener {
             numberStringBuilder.append(8)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        nineButton.setOnClickListener {
+        binding.nineButton.setOnClickListener {
             numberStringBuilder.append(9)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        pointButton.setOnClickListener {
+        binding.pointButton.setOnClickListener {
             numberStringBuilder.append(".")
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        plusButton.setOnClickListener {
+        binding.plusButton.setOnClickListener {
             numberStringBuilder.append("+")
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        minusButton.setOnClickListener {
+        binding.minusButton.setOnClickListener {
             numberStringBuilder.append("-")
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        multiplyButton.setOnClickListener {
+        binding.multiplyButton.setOnClickListener {
             numberStringBuilder.append("*")
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        divideButton.setOnClickListener {
+        binding.divideButton.setOnClickListener {
             numberStringBuilder.append("/")
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        clearButton.setOnClickListener {
+        binding.clearButton.setOnClickListener {
             numberStringBuilder.clear()
-            resultTextView.text = "0"
+            binding.resultTextView.text = "0"
         }
 
-        resetButton.setOnClickListener {
+        binding.resetButton.setOnClickListener {
             numberStringBuilder.deleteCharAt(numberStringBuilder.length - 1)
-            resultTextView.text = numberStringBuilder
+            binding.resultTextView.text = numberStringBuilder
         }
 
-        equalButton.setOnClickListener {
+        binding.equalButton.setOnClickListener {
             try {
                 val stringExpression = numberStringBuilder.toString()
                 val expression = Expression(stringExpression)
                 val expressionResult = expression.evaluate().numberValue
-                resultTextView.text = expressionResult.toString()
+                binding.resultTextView.text = expressionResult.toString()
 
                 numberStringBuilder.clear()
                 numberStringBuilder.append(expressionResult.toString())
