@@ -12,6 +12,8 @@ import com.ezylang.evalex.Expression
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val numberStringBuilder = StringBuilder()
+    private val historyList = mutableListOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -108,7 +110,12 @@ class MainActivity : AppCompatActivity() {
             resultTextView.text = numberStringBuilder
         }
 
+        historyButton.setOnClickListener {
+            TODO()
+        }
+
         equalButton.setOnClickListener {
+            saveHistory()
             binding.calculate()
         }
     }
@@ -126,5 +133,10 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "Exception: $t", Toast.LENGTH_LONG)
                 .show()
         }
+    }
+
+    private fun saveHistory() {
+        val stringExpression = numberStringBuilder.toString()
+        historyList.add(stringExpression)
     }
 }
