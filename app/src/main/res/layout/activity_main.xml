@@ -162,7 +162,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="History"
         android:textSize="20sp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/green"
         android:id="@+id/history_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />

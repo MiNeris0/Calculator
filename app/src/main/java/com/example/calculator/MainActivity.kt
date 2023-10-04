@@ -1,5 +1,6 @@
 package com.example.calculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -111,7 +112,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         historyButton.setOnClickListener {
-            TODO()
+            val intent = Intent(this@MainActivity, HistoryActivity::class.java)
+            intent.putExtra("history_list", historyList.toTypedArray())
+            startActivity(intent)
         }
 
         equalButton.setOnClickListener {
